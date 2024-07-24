@@ -1,4 +1,4 @@
-package com.example.android_template.utils
+package com.example.sun.utils
 
 interface OnItemRecyclerViewClickListener<T> {
     fun onItemClick(item: T?)

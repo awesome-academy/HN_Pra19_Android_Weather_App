@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.android_template'
+    namespace 'com.example.sun'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.android_template"
+        applicationId "com.example.sun"
         minSdk 24
         targetSdk 33
         versionCode 1

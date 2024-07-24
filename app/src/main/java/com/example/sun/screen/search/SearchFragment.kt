@@ -1,15 +1,16 @@
-package com.example.android_template.screen.search
+package com.example.sun.screen.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.android_template.R
+import androidx.fragment.app.Fragment
+import com.example.sun.R
 
 class SearchFragment : Fragment() {
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
