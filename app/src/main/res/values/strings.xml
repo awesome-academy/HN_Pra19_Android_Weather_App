@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">Android-template</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test_location">Ha Noi</string>
+    <string name="test_current_day">July 18, 2024</string>
+    <string name="test_current_text">Sunny</string>
+    <string name="test_current_temperature">30</string>
+    <string name="test_current_wind_speed">5.4</string>
+    <string name="test_current_humidity">83</string>
+    <string name="temperature">o</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="wind_speed_unit">km/h</string>
+    <string name="humidity">Humidity</string>
+    <string name="humidity_unit">%</string>
+    <string name="line">|</string>
+    <string name="forecast_report">Forecast report</string>
 </resources>

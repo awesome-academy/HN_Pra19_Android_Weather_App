@@ -1,12 +1,15 @@
 package com.example.sun.screen
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.sun.R
+import com.example.sun.utils.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity() {
+
+    override fun getLayoutResourceId(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun initView() {
+        TODO("Not yet implemented")
     }
 }
