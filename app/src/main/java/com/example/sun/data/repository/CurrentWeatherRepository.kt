@@ -8,11 +8,11 @@ class CurrentWeatherRepository(
     private val remote: CurrentWeatherDataSource.Remote,
     private val local: CurrentWeatherDataSource.Local
 ) : CurrentWeatherDataSource.Local, CurrentWeatherDataSource.Remote {
-    override fun getCurrentWeatherLocal(listener: OnResultListener<MutableList<CurrentWeather>>) {
+    override fun getCurrentWeatherLocal(listener: OnResultListener<CurrentWeather>) {
         TODO("Not yet implemented")
     }
 
-    override fun getCurrentWeather(listener: OnResultListener<MutableList<CurrentWeather>>) {
+    override fun getCurrentWeather(listener: OnResultListener<CurrentWeather>) {
         remote.getCurrentWeather(listener)
     }
 

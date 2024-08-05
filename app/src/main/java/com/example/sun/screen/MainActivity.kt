@@ -1,6 +1,7 @@
 package com.example.sun.screen
 
 import com.example.sun.R
+import com.example.sun.screen.home.HomeFragment
 import com.example.sun.utils.base.BaseActivity
 
 class MainActivity : BaseActivity() {
@@ -10,6 +11,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
-        TODO("Not yet implemented")
+        supportFragmentManager
+            .beginTransaction()
+            .addToBackStack(HomeFragment::javaClass.name)
+            .replace(R.id.layoutContainer, HomeFragment())
+            .commit()
     }
 }
