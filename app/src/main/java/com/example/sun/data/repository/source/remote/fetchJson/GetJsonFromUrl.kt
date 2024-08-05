@@ -4,7 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import com.example.sun.data.repository.source.remote.OnResultListener
 import com.example.sun.utils.Constant.BASE_API_KEY
-import com.example.sun.utils.Constant.BASE_LANGUAGE_VI
+import com.example.sun.utils.Constant.BASE_LANGUAGE_EN
 import com.example.sun.utils.Constant.BASE_QUERY_AUTO_IP
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -28,7 +28,7 @@ class GetJsonFromUrl<T> constructor(
         mExecutor.execute {
             val responseJson =
                 getJsonStringFromUrl(
-                    urlString + "key=$BASE_API_KEY" + BASE_QUERY_AUTO_IP + BASE_LANGUAGE_VI
+                    urlString + "key=$BASE_API_KEY" + BASE_QUERY_AUTO_IP + BASE_LANGUAGE_EN
                 )
             data = ParseDataWithJson().parseJsonToData(JSONObject(responseJson), keyEntity) as? T
             mHandler.post {

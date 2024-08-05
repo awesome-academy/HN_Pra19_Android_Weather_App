@@ -10,7 +10,7 @@ import com.example.sun.utils.CurrentWeatherEntry.CURRENT_WEATHER
 import org.json.JSONObject
 
 class CurrentWeatherRemoteDataSource : CurrentWeatherDataSource.Remote {
-    override fun getCurrentWeather(listener: OnResultListener<MutableList<CurrentWeather>>) {
+    override fun getCurrentWeather(listener: OnResultListener<CurrentWeather>) {
         GetJsonFromUrl.getInstance(
             urlString = BASE_URL + BASE_SEARCH_CURRENT_WEATHER,
             keyEntity = CURRENT_WEATHER,

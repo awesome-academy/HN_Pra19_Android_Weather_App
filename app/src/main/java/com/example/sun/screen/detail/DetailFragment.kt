@@ -1,19 +1,19 @@
 package com.example.sun.screen.detail
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.sun.R
+import com.example.sun.databinding.FragmentDetailBinding
+import com.example.sun.utils.base.BaseFragment
 
-class DetailFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+class DetailFragment : BaseFragment<FragmentDetailBinding>() {
+    override fun inflateViewBinding(inflater: LayoutInflater): FragmentDetailBinding {
+        return FragmentDetailBinding.inflate(inflater)
+    }
+
+    override fun initData() {
+        TODO("Not yet implemented")
+    }
+
+    override fun initView() {
+        TODO("Not yet implemented")
     }
 }

@@ -6,10 +6,10 @@ import com.example.sun.data.repository.source.remote.OnResultListener
 interface CurrentWeatherDataSource {
 
     interface Local {
-        fun getCurrentWeatherLocal(listener: OnResultListener<MutableList<CurrentWeather>>)
+        fun getCurrentWeatherLocal(listener: OnResultListener<CurrentWeather>)
     }
 
     interface Remote {
-        fun getCurrentWeather(listener: OnResultListener<MutableList<CurrentWeather>>)
+        fun getCurrentWeather(listener: OnResultListener<CurrentWeather>)
     }
 }
