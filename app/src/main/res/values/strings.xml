@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Android-template</string>
+    <string name="app_name">WeatherApp</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="test_location">Ha Noi</string>
+    <string name="test_location">Your location</string>
     <string name="test_current_day">July 18, 2024</string>
     <string name="test_current_text">Sunny</string>
     <string name="test_current_temperature">30</string>

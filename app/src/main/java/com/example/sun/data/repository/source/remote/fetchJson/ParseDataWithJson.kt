@@ -6,20 +6,14 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class ParseDataWithJson {
-    fun parseJsonToData(jsonObject: JSONObject?, keyEntity: String): MutableList<CurrentWeather> {
-        val data = mutableListOf<CurrentWeather>()
-        try {
-            val jsonArray = jsonObject?.getJSONArray(keyEntity)
-            for (i in 0 until (jsonArray?.length() ?: 0)) {
-                val item = parseJsonToObject(jsonArray?.getJSONObject(i))
-                item?.let {
-                    data.add(it)
-                }
-            }
+    fun parseJsonToData(jsonObject: JSONObject?, keyEntity: String): CurrentWeather? {
+        return try {
+            val weatherObject = jsonObject?.getJSONObject(keyEntity)
+            parseJsonToObject(weatherObject)
         } catch (e: JSONException) {
             Log.e("ParseDataWithJson", "parseJsonToData: ", e)
+            null
         }
-        return data
     }
 
     private fun parseJsonToObject(jsonObject: JSONObject?): CurrentWeather? {
