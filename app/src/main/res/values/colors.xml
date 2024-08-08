@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="text_button">#b7bdc9</color>
+    <color name="backgrow_01">#49a0f5</color>
+    <color name="backgrow_02">#7ebff4</color>
 </resources>
