@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sun.R
 import com.example.sun.data.model.Api
 import com.example.sun.data.model.Data
+import com.example.sun.data.repository.source.local.ForecastDayDao
+import com.example.sun.data.repository.source.local.ForecastHourDao
 import com.example.sun.data.repository.source.remote.fetchJson.fetchForecastDay
 import com.example.sun.data.repository.source.remote.fetchJson.fetchForecastHour
 import com.example.sun.databinding.FragmentDetailBinding
 import com.example.sun.utils.base.BaseFragment
+import com.example.sun.utils.network.NetworkUtils
+
 import java.util.concurrent.Executors
 
 class DetailFragment : BaseFragment<FragmentDetailBinding>() {
@@ -40,18 +44,40 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
         Log.d("DetailFragment", "updateWeatherHome called")
         executor.execute {
             try {
-                val forecastHour = fetchForecastHour(Api.apiForecastHour)
-                val forecastDay = fetchForecastDay(Api.apiForecastDay)
                 val dataList = mutableListOf<Data>()
 
-                dataList.add(Data.ForecastHourData(forecastHour))
-                dataList.add(Data.ForecastDayData(forecastDay))
+                context?.let { ctx ->
+                    val forecastHourDao = ForecastHourDao(ctx)
+                    val forecastDayDao = ForecastDayDao(ctx)
+                    if (NetworkUtils.isNetworkAvailable(ctx)) {
+                        val forecastHour = fetchForecastHour( Api.apiForecastHour)
+                        val forecastDay = fetchForecastDay( Api.apiForecastDay)
 
-                activity?.runOnUiThread {
-                    mList = ArrayList(dataList)
-                    val adapter = DetailAdapter(mList)
-                    viewBinding.mainRecyclerview.adapter = adapter
+                        forecastHourDao.deleteAllForecastHours()
+                        forecastDayDao.deleteAllForecastDays()
 
+                        forecastHour.forEach { forecastHourDao.insertForecastHour(it)
+                            Log.d("Database", "Inserted ForecastHour: $it")}
+                        forecastDay.forEach { forecastDayDao.insertForecastDay(it)
+                            Log.d("Database", "Inserted ForecastDay: $it")}
+
+                        dataList.add(Data.ForecastHourData(forecastHour))
+                        dataList.add(Data.ForecastDayData(forecastDay))
+
+
+                    }else{
+                        val forecastHour = forecastHourDao.getForecastHours()
+                        val forecastDay = forecastDayDao.getForecastDays()
+
+                        dataList.add(Data.ForecastHourData(forecastHour))
+                        dataList.add(Data.ForecastDayData(forecastDay))
+                        Log.d("Database", "Inserted ForecastHour: $forecastHour")
+                    }
+                    activity?.runOnUiThread {
+                        mList = ArrayList(dataList)
+                        val adapter = DetailAdapter(mList)
+                        viewBinding.mainRecyclerview.adapter = adapter
+                    }
                 }
             } catch (e: Exception) {
                 Log.e("DetailFragment", "Error updating weather home", e)

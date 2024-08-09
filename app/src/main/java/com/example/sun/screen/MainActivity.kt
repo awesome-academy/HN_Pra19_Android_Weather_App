@@ -2,6 +2,7 @@ package com.example.sun.screen
 
 import android.util.Log
 import com.example.sun.R
+import com.example.sun.screen.detail.DetailFragment
 import com.example.sun.screen.home.HomeFragment
 import com.example.sun.utils.base.BaseActivity
 
@@ -15,7 +16,7 @@ class MainActivity : BaseActivity() {
         Log.i("MainActivity", "hashCode: ${supportFragmentManager.hashCode()}")
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.layoutContainer, HomeFragment.newInstance())
+            .replace(R.id.layoutContainer, DetailFragment.newInstance())
             .addToBackStack(HomeFragment::class.java.name)
             .commit()
         supportFragmentManager.executePendingTransactions()

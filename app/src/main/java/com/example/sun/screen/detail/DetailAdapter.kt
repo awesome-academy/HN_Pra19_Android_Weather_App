@@ -8,14 +8,22 @@ import com.example.sun.data.model.Data
 import com.example.sun.data.model.DataType
 import com.example.sun.data.model.ForecastDay
 import com.example.sun.data.model.ForecastHour
+import com.example.sun.data.repository.source.local.ForecastDayDao
+import com.example.sun.data.repository.source.local.ForecastHourDao
 import com.example.sun.databinding.FragmentDetailItemBinding
 
 class DetailAdapter(private val weather: List<Data>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     inner class DetaiHolder(private val binding : FragmentDetailItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private val forecastHourDao: ForecastHourDao? = null
+        private val forecastDayDao: ForecastDayDao? = null
+        private var forecastHours: List<ForecastHour> = listOf()
+        private var forecastDays: List<ForecastDay> = listOf()
 
-    fun bindForecastHour(forecasthourList : List<ForecastHour>) {
+        fun bindForecastHour(forecasthourList : List<ForecastHour>) {
+        forecastHourDao?.getForecastHours()?.let { forecastHours = it }
         binding.childRecyclerView.setHasFixedSize(true)
         binding.childRecyclerView.layoutManager = LinearLayoutManager(binding.root.context,RecyclerView.HORIZONTAL,false)
         val adapter = ChildAdapter(DataType.FORECAST_HOUR, ForecastHourList = forecasthourList)
@@ -27,6 +35,7 @@ class DetailAdapter(private val weather: List<Data>) :
         }
 
     fun bindForecastDay(forecastDayList: List<ForecastDay>) {
+        forecastDayDao?.getForecastDays()?.let { forecastDays = it }
         binding.childRecyclerView.setHasFixedSize(true)
         binding.childRecyclerView.layoutManager = LinearLayoutManager(binding.root.context, RecyclerView.VERTICAL, false)
         val adapter = ChildAdapter(DataType.FORECAST_DAY, ForecastDayList = forecastDayList)
@@ -53,7 +62,7 @@ class DetailAdapter(private val weather: List<Data>) :
         return when (weather[position]) {
             is Data.ForecastHourData -> DataType.FORECAST_HOUR
             is Data.ForecastDayData -> DataType.FORECAST_DAY
-            else -> throw IllegalArgumentException("Invalid")
+
         }
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -69,7 +78,6 @@ class DetailAdapter(private val weather: List<Data>) :
                     holder.bindForecastDay(data.forecastDayList)
                 }
             }
-            else -> throw IllegalArgumentException("Invalid")
         }
     }
 }
