@@ -17,13 +17,10 @@ class DetailAdapter(private val weather: List<Data>) :
 
     inner class DetaiHolder(private val binding : FragmentDetailItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        private val forecastHourDao: ForecastHourDao? = null
-        private val forecastDayDao: ForecastDayDao? = null
-        private var forecastHours: List<ForecastHour> = listOf()
-        private var forecastDays: List<ForecastDay> = listOf()
+
+
 
         fun bindForecastHour(forecasthourList : List<ForecastHour>) {
-        forecastHourDao?.getForecastHours()?.let { forecastHours = it }
         binding.childRecyclerView.setHasFixedSize(true)
         binding.childRecyclerView.layoutManager = LinearLayoutManager(binding.root.context,RecyclerView.HORIZONTAL,false)
         val adapter = ChildAdapter(DataType.FORECAST_HOUR, ForecastHourList = forecasthourList)
@@ -35,7 +32,6 @@ class DetailAdapter(private val weather: List<Data>) :
         }
 
     fun bindForecastDay(forecastDayList: List<ForecastDay>) {
-        forecastDayDao?.getForecastDays()?.let { forecastDays = it }
         binding.childRecyclerView.setHasFixedSize(true)
         binding.childRecyclerView.layoutManager = LinearLayoutManager(binding.root.context, RecyclerView.VERTICAL, false)
         val adapter = ChildAdapter(DataType.FORECAST_DAY, ForecastDayList = forecastDayList)
