@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fre_hour">
+
+    <TextView
+        android:id="@+id/forecast_hour"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/forecast_hour_text" />
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forecast_hour"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/forecast_img"
+        tools:src="@drawable/cloud" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/forecast_t"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forecast_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/forecast_temperature_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
