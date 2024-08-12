@@ -14,7 +14,6 @@
     <string name="humidity_unit">%</string>
     <string name="line">|</string>
     <string name="forecast_report">Forecast report</string>
-
     <string name="hour_text">12</string>
     <string name="temperature_text">94°C</string>
     <string name="day_text">29-07</string>

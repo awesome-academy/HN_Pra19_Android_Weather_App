@@ -12,6 +12,8 @@ import com.example.sun.data.repository.source.remote.CurrentWeatherRemoteDataSou
 import com.example.sun.databinding.FragmentHomeBinding
 import com.example.sun.utils.base.BaseFragment
 import com.example.sun.screen.detail.DetailFragment
+import com.example.sun.screen.search.SearchFragment
+
 class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
 
     private lateinit var mHomePresenter: HomePresenter
@@ -36,6 +38,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
             Log.i("onViewCreated", "setOnClickListener")
             onForecastClicked()
         }
+        viewBinding.tvLocation.setOnClickListener {
+            onSearchClicked()
+        }
+        viewBinding.icArrowDown.setOnClickListener {
+            onSearchClicked()
+        }
+    }
+
+    private fun onSearchClicked() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.layoutContainer, SearchFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun onForecastClicked() {
@@ -44,8 +59,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
             .replace(R.id.layoutContainer, DetailFragment.newInstance())
             .addToBackStack(null)
             .commit()
-        Log.i("onBtnBackClicked", "Back stack entry count when onForecastClicked: ${parentFragmentManager.backStackEntryCount}")
+        Log.i(
+            "onBtnBackClicked",
+            "Back stack entry count when onForecastClicked: ${parentFragmentManager.backStackEntryCount}"
+        )
     }
+
     override fun onGetCurrentWeatherSuccess(currentWeather: CurrentWeather) {
         Log.e("CurrentWeather", currentWeather.toString())
         viewBinding.apply {
