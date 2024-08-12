@@ -16,7 +16,7 @@ class MainActivity : BaseActivity() {
         Log.i("MainActivity", "hashCode: ${supportFragmentManager.hashCode()}")
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.layoutContainer, DetailFragment.newInstance())
+            .replace(R.id.layoutContainer, HomeFragment.newInstance())
             .addToBackStack(HomeFragment::class.java.name)
             .commit()
         supportFragmentManager.executePendingTransactions()
